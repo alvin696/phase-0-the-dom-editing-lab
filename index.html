@@ -1,1 +1,65 @@
 <!-- Write your code here! -->
+describe("within index.html", () => {
+    beforeEach(() => {
+      const html = `
+        <html>
+          <head>
+            <title>My HTML adventure</title>
+          </head>
+          <body>
+            <h1>My HTML adventure</h1>
+            <p><strong>Hi there!</strong> This is a <em>paragraph</em> with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">link</a>.</p>
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+              </tr>
+              <tr>
+                <td>John</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Jane</td>
+                <td>25</td>
+              </tr>
+            </table>
+          </body>
+        </html>
+      `;
+      document.documentElement.innerHTML = html;
+    });
+    
+    it("contains a <body> tag", () => {
+      expect(document.querySelector('body')).to.exist;
+    });
+  
+    it("contains a </body> tag", () => {
+      expect(document.querySelector('body').innerHTML).to.include('</body>')
+    });
+  
+    it("contains an <h1> tag", () => {
+      expect(document.querySelector('h1').innerHTML).to.equal('My HTML adventure');
+    });
+  
+    it("contains a <p> tag", () => {
+      expect(document.querySelector('p')).to.exist;
+    });
+  
+    it("within the <p>, it contains a <strong> tag", () => {
+      expect(document.querySelector('p strong')).to.exist;
+    });
+  
+    it("within the <p>, it contains an <em> tag", () => {
+      expect(document.querySelector('p em')).to.exist;
+    });
+  
+    it("within the <p>, it contains an <a> tag", () => {
+      expect(document.querySelector('p a')).to.exist;
+      expect(document.querySelector('p a').getAttribute('href')).to.equal('https://developer.mozilla.org/en-US/docs/Web/HTML');
+    });
+  
+    it("within the <body>, it contains an <table> tag", () => {
+      expect(document.querySelector('table')).to.exist;
+    });
+  });
+  
